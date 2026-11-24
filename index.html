@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>풍태후</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="webtoon.css">
+</head>
+<body class="shelf">
+  <main class="toc">
+    <header class="series">
+      <div class="cover">
+        <img src="images/cut69-walk.jpg" alt="남색 포를 입고 궁궐을 걷는 풍태후">
+        <span class="badge">북위</span>
+      </div>
+      <div>
+        <h1>풍태후</h1>
+        <p class="meta">북위 · 위진남북조</p>
+        <p class="synopsis">죄인의 딸로 궁에 들어온 풍씨 여인이 황후가 되고, 태후가 되어 조정을 움켜쥔다. 황제는 있었으나 자리는 비어 있었고, 어린 황제가 옥좌에 앉은 뒤에도 권력의 싸움은 끝나지 않는다.</p>
+        <ul class="tags">
+          <li>#역사</li>
+          <li>#궁중</li>
+          <li>#북위</li>
+          <li>#위진남북조</li>
+          <li>#드라마</li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="actions">
+      <a class="go" href="episode-1.html">첫 화 보기</a>
+      <button class="ghost" type="button" id="fav">+ 관심</button>
+      <button class="ghost" type="button" id="share">공유하기</button>
+    </div>
+
+    <div class="list-head">
+      <p>총 4화</p>
+      <p class="sort">
+        <button type="button" class="on" data-order="new">최신화부터</button>
+        <span>|</span>
+        <button type="button" data-order="old">1화부터</button>
+      </p>
+    </div>
+
+    <ol id="eps">
+      <li data-n="4">
+        <a href="episode-4.html">
+          <img src="images/cut78-throne.jpg" alt="">
+          <span>
+            <b>4화</b>
+            <small>양위, 그리고 새로운 황제의 탄생</small>
+          </span>
+        </a>
+      </li>
+      <li data-n="3">
+        <a href="episode-3.html">
+          <img src="images/cut50-emperor.jpg" alt="">
+          <span>
+            <b>3화</b>
+            <small>피로 물든 궁궐</small>
+          </span>
+        </a>
+      </li>
+      <li data-n="2">
+        <a href="episode-2.html">
+          <img src="images/cut19-crown.jpg" alt="">
+          <span>
+            <b>2화</b>
+            <small>황후의 자리에 오르다</small>
+          </span>
+        </a>
+      </li>
+      <li data-n="1">
+        <a href="episode-1.html">
+          <img src="images/cut5-girl.jpg" alt="">
+          <span>
+            <b>1화</b>
+            <small>죄인의 딸, 궁궐에 들어서다</small>
+          </span>
+        </a>
+      </li>
+    </ol>
+  </main>
+  <script>
+    var fav = document.getElementById("fav");
+    fav.addEventListener("click", function () {
+      var on = fav.classList.toggle("on");
+      fav.textContent = on ? "✓ 관심" : "+ 관심";
+    });
+
+    document.getElementById("share").addEventListener("click", function () {
+      var url = location.href.split("?")[0];
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url);
+      }
+      this.textContent = "주소 복사됨";
+    });
+
+    var list = document.getElementById("eps");
+    document.querySelectorAll(".sort button").forEach(function (button) {
+      button.addEventListener("click", function () {
+        document.querySelectorAll(".sort button").forEach(function (item) {
+          item.classList.remove("on");
+        });
+        button.classList.add("on");
+        var items = Array.prototype.slice.call(list.children);
+        items.sort(function (a, b) {
+          var an = Number(a.dataset.n);
+          var bn = Number(b.dataset.n);
+          return button.dataset.order === "old" ? an - bn : bn - an;
+        });
+        items.forEach(function (item) { list.appendChild(item); });
+      });
+    });
+  </script>
+</body>
+</html>

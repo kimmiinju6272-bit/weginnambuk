@@ -1,0 +1,1307 @@
+:root {
+      --bg: #000;
+      --paper: #f4efe6;
+      --gold: #c6a56a;
+      --gold-dim: rgba(198, 165, 106, 0.72);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--paper);
+    }
+
+    body {
+      font-family: "Nanum Myeongjo", Batang, serif;
+    }
+
+    .reader {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      background: #000;
+    }
+
+    .void {
+      position: relative;
+      height: 200vh;
+      background: #000;
+    }
+
+    .chapter {
+      min-height: 62vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 7vw 11vh;
+      background: #000;
+    }
+
+    .chapter.open {
+      min-height: 0;
+      justify-content: flex-start;
+      padding: 7vh 7vw 6vh;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      font-size: 12px;
+      letter-spacing: 0.46em;
+      color: var(--gold);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 7vw, 44px);
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.035em;
+    }
+
+    .panel {
+      position: relative;
+      width: 100%;
+      margin: 32px 0 0;
+      background: #000;
+      container-type: inline-size;
+    }
+
+    .panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .chapter + .panel,
+    .blackout + .panel { margin-top: 0; }
+
+    .panel.lg { width: 100%; }
+    .panel.wide { width: 88%; }
+    .panel.md { width: 72%; margin-top: 48px; }
+    .panel.tall { width: 44%; margin-top: 72px; margin-bottom: 28px; }
+    .panel.sm { width: 54%; margin-top: 44px; }
+    .panel.xs { width: 34%; margin-top: 64px; margin-bottom: 20px; }
+    .panel.band { width: 78%; margin-top: 40px; }
+
+    .left { margin-left: 0; margin-right: auto; }
+    .right { margin-left: auto; margin-right: 5%; }
+    .inset { margin-left: 9%; margin-right: auto; }
+
+.silence {
+  height: 50vh;
+  background: #000;
+}
+
+.half {
+  height: 50vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.half .cry {
+  margin: 0;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(28px, 6vw, 42px);
+  letter-spacing: 0.14em;
+  color: rgba(244, 239, 230, 0.94);
+}
+
+.hoof {
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 7vh 9vw 8vh;
+}
+
+.hoof p {
+  margin: 0;
+  font-family: "Nanum Brush Script", cursive;
+  color: rgba(232, 232, 232, 0.92);
+  line-height: 1;
+}
+
+.hoof p:nth-child(1) { font-size: 22px; opacity: 0.38; }
+.hoof p:nth-child(2) { font-size: 38px; opacity: 0.68; }
+.hoof p:nth-child(3) { font-size: clamp(52px, 12vw, 76px); opacity: 1; }
+
+.place {
+  position: absolute;
+  z-index: 4;
+  left: 5%;
+  bottom: 5%;
+  margin: 0;
+  padding: 7px 12px 8px;
+  border: 1px solid var(--gold-dim);
+  background: rgba(12, 11, 9, 0.9);
+  color: var(--paper);
+  font-size: 15px;
+  letter-spacing: 0.08em;
+}
+
+.wind {
+  top: 7%;
+  right: 5%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(40px, 11cqw, 68px);
+  color: rgba(214, 226, 236, 0.84);
+  transform: rotate(-7deg);
+}
+
+.steps {
+  left: 5%;
+  bottom: 16%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(28px, 7cqw, 44px);
+  color: rgba(232, 236, 240, 0.8);
+}
+
+.strain {
+  left: 5%;
+  top: 46%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(34px, 9cqw, 52px);
+  color: rgba(244, 239, 230, 0.92);
+}
+
+.wind-sm {
+  left: 5%;
+  top: 6%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(24px, 6cqw, 36px);
+  color: rgba(190, 206, 220, 0.8);
+}
+
+.lapse {
+  height: 200vh;
+  background: #000;
+}
+
+    .sfx {
+      position: absolute;
+      z-index: 2;
+      margin: 0;
+      line-height: 1;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .ding {
+      right: 18px;
+      bottom: 20px;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: 34px;
+      color: #6d6d6d;
+    }
+
+    .rain {
+      top: 4%;
+      left: 4%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(64px, 15cqw, 108px);
+      letter-spacing: 0.04em;
+      color: rgba(244, 247, 250, 0.92);
+      text-shadow: 0 0 18px rgba(170, 196, 220, 0.4);
+      transform: rotate(-8deg);
+    }
+
+    .spark {
+      top: 16%;
+      right: 5%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(34px, 7.5cqw, 58px);
+      color: #f3d7a4;
+      text-shadow: 0 0 12px rgba(255, 150, 50, 0.5);
+      transform: rotate(6deg);
+    }
+
+    .soft {
+      top: -0.15em;
+      left: 108%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(42px, 22cqw, 68px);
+      color: rgba(226, 232, 238, 0.8);
+    }
+
+    .step {
+      left: 4%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(46px, 12cqw, 78px);
+      line-height: 1;
+      color: rgba(244, 246, 248, 0.94);
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
+    }
+
+    .step-a { bottom: 16%; }
+    .step-b { bottom: 5%; }
+
+    .breath {
+      top: 3%;
+      right: 4%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(44px, 13cqw, 72px);
+      color: rgba(248, 248, 246, 0.95);
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
+    }
+
+    .splat {
+      left: 3%;
+      bottom: 7%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(42px, 11cqw, 76px);
+      color: #f7f7f5;
+      text-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
+      transform: rotate(-8deg);
+    }
+
+    .creak {
+      top: 8%;
+      right: 2.5%;
+      font-family: "Nanum Brush Script", cursive;
+      writing-mode: vertical-rl;
+      font-size: clamp(40px, 8.2cqw, 72px);
+      letter-spacing: 0.22em;
+      color: #f8edd6;
+      text-shadow:
+        0 0 18px rgba(255, 196, 90, 0.4),
+        0 3px 0 rgba(0, 0, 0, 0.55);
+    }
+
+.narration {
+  padding: 32px 7vw 18px;
+  background: #000;
+}
+
+.narration.lead {
+  padding-top: 18vh;
+  padding-bottom: 0;
+}
+
+.narration.lead .box {
+  max-width: 24em;
+}
+
+.gap {
+  height: 28vh;
+  background: #000;
+}
+
+.narration.year {
+  padding-top: 0;
+  padding-bottom: 4vh;
+}
+
+.narration.year .box {
+  width: fit-content;
+}
+
+    .narration .box {
+      margin: 0;
+      max-width: 16em;
+      padding: 16px 18px 15px;
+      border: 1px solid var(--gold-dim);
+      background: #0c0b09;
+      font-size: 16.5px;
+      line-height: 1.95;
+      letter-spacing: -0.02em;
+    }
+
+    .mind {
+      margin: 22px 0 0;
+      max-width: 15em;
+      color: #ddd6cb;
+      font-size: 17px;
+      line-height: 1.75;
+      letter-spacing: -0.03em;
+    }
+
+    .blackout {
+      height: 100vh;
+      background: #000;
+    }
+
+    .card { min-height: 78vh; }
+.card-copy {
+  margin: 0;
+  max-width: 18em;
+  font-size: clamp(26px, 5.6vw, 38px);
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: -0.04em;
+}
+    .boom {
+      position: static;
+      margin: 28px 0 0;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(48px, 9vw, 72px);
+      color: #f4efe6;
+    }
+
+    .line, .thought, .follow {
+      position: absolute;
+      z-index: 4;
+      margin: 0;
+      font-family: "Nanum Myeongjo", Batang, serif;
+      letter-spacing: -0.03em;
+    }
+
+    .line {
+      max-width: 15.5em;
+      padding: 8px 11px 9px;
+      background: rgba(248, 244, 236, 0.95);
+      color: #1b1612;
+      font-size: clamp(14px, 3.3cqw, 18px);
+      line-height: 1.5;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    }
+
+    .line b {
+      display: block;
+      margin-bottom: 2px;
+      color: #8a6840;
+      font-size: 0.7em;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .line.whisper {
+      background: rgba(248, 244, 236, 0.8);
+      font-size: clamp(13px, 2.7cqw, 15.5px);
+    }
+
+    .gutter-left {
+      right: calc(100% + 16px);
+      left: auto;
+      top: 14%;
+      width: min(220px, 44vw);
+    }
+
+    .gutter-right {
+      left: calc(100% + 16px);
+      right: auto;
+      top: 10%;
+      width: min(230px, 42vw);
+    }
+
+    .thought {
+      color: #f6f1e8;
+      font-size: clamp(16px, 3.6cqw, 21px);
+      line-height: 1.65;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.92);
+    }
+
+.thought.gutter-left {
+  width: min(230px, 46vw);
+  font-size: 17px;
+  text-align: right;
+}
+
+.thought.gutter-right {
+  left: calc(100% + 16px);
+  right: auto;
+  top: 10%;
+  width: min(230px, 42vw);
+  font-size: 16px;
+}
+
+.line.faint {
+  background: rgba(248, 244, 236, 0.62);
+  color: #3a332b;
+}
+
+.card-sound {
+  position: static;
+  margin: 28px 0 0;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(48px, 9vw, 72px);
+  color: #f4efe6;
+}
+
+    .follow {
+      position: static;
+      display: block;
+      width: min(16em, 78%);
+      margin: 16px 6% 0 auto;
+      color: #f3eee6;
+      font-size: 17px;
+      line-height: 1.7;
+      text-align: right;
+    }
+
+    .heart {
+      top: 8%;
+      right: 6%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(42px, 10cqw, 70px);
+      color: rgba(255, 214, 206, 0.9);
+      text-shadow: 0 0 16px rgba(160, 40, 40, 0.35);
+    }
+
+    .heart-soft {
+      top: 5%;
+      left: 6%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(30px, 8cqw, 46px);
+      color: rgba(255, 220, 210, 0.82);
+    }
+
+    .flare {
+      left: 4%;
+      top: 44%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(52px, 13cqw, 88px);
+      color: #ffc27a;
+      text-shadow: 0 0 18px rgba(255, 110, 20, 0.5);
+      transform: rotate(-8deg);
+    }
+
+    .steam {
+      right: 5%;
+      top: 56%;
+      font-family: "Nanum Brush Script", cursive;
+      font-size: clamp(36px, 8cqw, 58px);
+      color: rgba(255, 236, 214, 0.92);
+      transform: rotate(7deg);
+    }
+
+.hiss {
+  top: 7%;
+  right: 4%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(34px, 8cqw, 54px);
+  color: #f6e2b0;
+  transform: rotate(-6deg);
+}
+
+.chime {
+  top: 5%;
+  left: 4%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(40px, 11cqw, 62px);
+  color: #f7f3ea;
+}
+
+.clink {
+  right: 5%;
+  bottom: 8%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(36px, 10cqw, 54px);
+  color: #f7f3ea;
+}
+
+.tap-small {
+  left: 7%;
+  bottom: 12%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(22px, 8cqw, 32px);
+  color: #f4efe6;
+}
+
+.tap-fill {
+  right: 5%;
+  top: 14%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(52px, 20cqw, 84px);
+  color: rgba(247, 244, 238, 0.94);
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.slide {
+  left: 6%;
+  bottom: 10%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(40px, 14cqw, 60px);
+  color: rgba(236, 240, 244, 0.92);
+}
+
+.drum {
+  left: 5%;
+  font-family: "Nanum Brush Script", cursive;
+  color: #f6edd8;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.drum .edge {
+  display: block;
+  height: 2px;
+  width: 1.45em;
+  margin-top: 0.16em;
+  background: linear-gradient(90deg, #f4efe6, rgba(244, 239, 230, 0));
+}
+
+.drum.d1 { top: 14%; font-size: clamp(30px, 8cqw, 44px); }
+.drum.d2 { top: 40%; font-size: clamp(52px, 13cqw, 76px); }
+.drum.d3 { top: 66%; font-size: clamp(78px, 20cqw, 118px); }
+
+.sheathe {
+  right: 6%;
+  bottom: 7%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(42px, 11cqw, 68px);
+  color: #f4efe6;
+}
+
+.murmur {
+  top: 7%;
+  left: 5%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(36px, 8cqw, 58px);
+  color: rgba(244, 239, 230, 0.88);
+}
+
+.scratch {
+  right: 6%;
+  top: 18%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(30px, 7cqw, 48px);
+  color: rgba(232, 226, 214, 0.92);
+}
+
+.voice {
+  position: absolute;
+  z-index: 3;
+  left: 6%;
+  top: 7%;
+  margin: 0;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(72px, 22cqw, 128px);
+  line-height: 1;
+  color: #f7f4ee;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.28);
+}
+
+.voice::before {
+  content: "";
+  position: absolute;
+  left: 40%;
+  top: 58%;
+  width: 240%;
+  height: 240%;
+  transform: translate(-50%, -50%);
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0 13deg,
+    rgba(255, 255, 255, 0.72) 13deg 14.1deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 30%, #000 31% 58%, transparent 59%);
+  mask: radial-gradient(circle, transparent 30%, #000 31% 58%, transparent 59%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bang {
+  top: 5%;
+  left: 4%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(52px, 13cqw, 88px);
+  color: #fff4e8;
+  transform: rotate(-7deg);
+}
+
+.clang {
+  left: 5%;
+  bottom: 14%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(34px, 8cqw, 54px);
+  color: #f7f3ea;
+}
+
+.rumble {
+  right: 4%;
+  bottom: 6%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(38px, 9cqw, 64px);
+  color: #ffd0b0;
+}
+
+.drag {
+  left: 5%;
+  bottom: 6%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(40px, 11cqw, 60px);
+  color: #f4efe6;
+}
+
+.line.tremble { transform: rotate(-1.5deg); }
+
+.line.tremble::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  bottom: -12px;
+  width: 18px;
+  height: 14px;
+  background: rgba(248, 244, 236, 0.95);
+  clip-path: polygon(0 0, 100% 8%, 42% 100%, 22% 48%, 6% 92%);
+}
+
+.foot-gap {
+  position: relative;
+  height: 34vh;
+  background: #000;
+}
+
+.foot-gap p {
+  position: absolute;
+  left: 14%;
+  bottom: 16%;
+  margin: 0;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: 46px;
+  color: #f4efe6;
+}
+
+.foot-gap.alt p {
+  left: auto;
+  right: 12%;
+  font-size: 58px;
+}
+
+.thud {
+  font-family: "Nanum Brush Script", cursive;
+  color: #f4efe6;
+}
+
+.thud.k1 { left: 5%; bottom: 16%; font-size: clamp(28px, 7cqw, 42px); }
+.thud.k2 { left: 36%; bottom: 30%; font-size: clamp(42px, 11cqw, 62px); }
+.thud.k3 { right: 5%; bottom: 10%; font-size: clamp(58px, 15cqw, 86px); }
+
+body.shelf {
+  background: #fff;
+  color: #141414;
+  font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.toc {
+  width: min(760px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+  background: #fff;
+}
+
+.series {
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.cover {
+  position: relative;
+}
+
+.cover img {
+  display: block;
+  width: 148px;
+  height: 198px;
+  object-fit: cover;
+  object-position: center 16%;
+  border-radius: 4px;
+  background: #eee;
+}
+
+.badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 2px 6px 3px;
+  border-radius: 2px;
+  background: #ff4b6e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.series h1 {
+  margin: 2px 0 0;
+  color: #111;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
+}
+
+.meta {
+  margin: 8px 0 0;
+  color: #8d8d8d;
+  font-size: 13px;
+}
+
+.synopsis {
+  margin: 12px 0 0;
+  color: #666;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: #f2f2f2;
+  color: #666;
+  font-size: 12px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1.35fr 1.15fr 0.9fr;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.actions a,
+.actions button {
+  height: 48px;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.go {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00c73c;
+  color: #fff;
+  text-decoration: none;
+}
+
+.go:hover { background: #00b336; }
+
+.ghost {
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  color: #222;
+}
+
+.ghost.on {
+  border-color: #00c73c;
+  color: #00a832;
+}
+
+.list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+  padding: 16px 2px 8px;
+  border-top: 1px solid #eee;
+  color: #8a8a8a;
+  font-size: 14px;
+}
+
+.list-head p { margin: 0; }
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #b0b0b0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.sort button.on {
+  color: #222;
+  font-weight: 700;
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc ol a {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #f0f0f0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc ol a img {
+  width: 112px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #eee;
+}
+
+.toc ol b {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.toc ol small {
+  display: block;
+  margin-top: 4px;
+  color: #8a8a8a;
+  font-size: 13px;
+}
+
+.toc ol a:hover b { color: #00a832; }
+
+@media (max-width: 560px) {
+  .series { grid-template-columns: 112px 1fr; gap: 14px; }
+  .cover img { width: 112px; height: 150px; }
+  .series h1 { font-size: 24px; }
+  .actions { grid-template-columns: 1fr; }
+}
+
+.ep-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 56px 0 80px;
+  background: #000;
+  font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.ep-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.ep-nav .next {
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background: #00c73c;
+}
+
+.ep-nav .next small {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.ep-nav .next span {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.ep-nav .next:hover { background: #00b336; }
+
+.ep-nav .back {
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  background: transparent;
+  color: #fff;
+}
+
+.ep-nav .back:hover { background: rgba(255, 255, 255, 0.08); }
+
+.follow.left {
+  margin: 18px 0 0 9%;
+  text-align: left;
+}
+
+.follow b {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--gold);
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.scream-gap {
+  height: 84vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.scream {
+  margin: 0;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(64px, 14vw, 120px);
+  letter-spacing: 0.02em;
+  color: #f0e4de;
+  text-shadow: 0 0 28px rgba(120, 20, 20, 0.55);
+}
+
+.void-3 { height: 300vh; }
+
+.panel.sm.flash { margin-top: 16px; }
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: min(760px, 94%);
+  margin: 48px auto 0;
+}
+
+.split .panel,
+.pair .panel {
+  width: 100%;
+  margin: 0;
+}
+
+.split .panel img {
+  height: 50vh;
+  min-height: 260px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.split .panel.face img { object-position: center 18%; }
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 78%;
+  margin: 44px auto 0;
+}
+
+.panel.strip {
+  width: 64%;
+  margin-top: 8px;
+}
+
+.panel.strip.right { margin-right: 0; }
+
+.panel.strip img {
+  height: 14vh;
+  min-height: 96px;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.panel.strip.low img { object-position: center 58%; }
+
+.rest {
+  height: 22vh;
+  background: #000;
+}
+
+.beat {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.7em;
+  margin: 34px 0 0;
+  color: #f4efe6;
+}
+
+.beat .tick {
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(42px, 8vw, 68px);
+  line-height: 0.8;
+}
+
+.beat .rush {
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(26px, 5.4vw, 40px);
+  letter-spacing: -0.1em;
+  line-height: 1;
+}
+
+.pulse {
+  left: 4%;
+  font-family: "Nanum Brush Script", cursive;
+  color: rgba(255, 214, 206, 0.92);
+  text-shadow: 0 0 16px rgba(160, 40, 40, 0.45);
+}
+
+.pulse.p1 { top: 7%; font-size: clamp(34px, 8cqw, 54px); }
+.pulse.p2 { top: 18%; left: 9%; font-size: clamp(48px, 11cqw, 76px); }
+
+.burst {
+  left: 4%;
+  top: 6%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(58px, 15cqw, 108px);
+  color: #fff6ee;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+  transform: rotate(-8deg);
+}
+
+.flick {
+  top: 6%;
+  right: 5%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(36px, 14cqw, 58px);
+  color: #f7f3ea;
+}
+
+.hit {
+  left: 6%;
+  bottom: 7%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(26px, 11cqw, 42px);
+  color: #f4efe6;
+}
+
+.stomp {
+  left: 6%;
+  bottom: 8%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(40px, 16cqw, 68px);
+  color: #f4efe6;
+}
+
+.run {
+  right: 4%;
+  bottom: 7%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(30px, 9cqw, 48px);
+  letter-spacing: -0.06em;
+  color: #f4efe6;
+}
+
+.squeeze {
+  left: 8%;
+  bottom: 10%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(32px, 14cqw, 52px);
+  color: #f4efe6;
+}
+
+.scoff {
+  top: 6%;
+  right: 6%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(32px, 12cqw, 48px);
+  color: #f4efe6;
+}
+
+.draw {
+  left: 4%;
+  bottom: 16%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(36px, 8cqw, 56px);
+  color: #f4efe6;
+}
+
+.lock {
+  right: 5%;
+  bottom: 7%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(32px, 8cqw, 52px);
+  color: #f7f3ea;
+}
+
+.screech {
+  left: 4%;
+  top: 8%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(40px, 11cqw, 68px);
+  letter-spacing: 0.08em;
+  color: #fff6ee;
+  transform: rotate(-6deg);
+}
+
+.shake {
+  left: 6%;
+  bottom: 8%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(28px, 8cqw, 44px);
+  color: #f4efe6;
+}
+
+.slam {
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(72px, 18cqw, 128px);
+  color: #fff8ef;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.roll {
+  margin: 22px 8% 0 auto;
+  width: max-content;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(26px, 6vw, 42px);
+  letter-spacing: -0.04em;
+  color: #f4efe6;
+}
+
+.say {
+  width: min(20em, 82%);
+  margin: 16px 0 0 8%;
+  padding: 8px 11px 9px;
+  background: rgba(248, 244, 236, 0.95);
+  color: #1b1612;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.say b {
+  display: block;
+  margin-bottom: 2px;
+  color: #8a6840;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.line.dream {
+  background: rgba(244, 239, 230, 0.58);
+  color: rgba(27, 22, 18, 0.9);
+  box-shadow:
+    0 0 12px 6px rgba(244, 239, 230, 0.42),
+    0 0 28px 14px rgba(244, 239, 230, 0.18);
+}
+
+.line.dream b {
+  color: rgba(138, 104, 64, 0.78);
+}
+
+.voices {
+  background: #000;
+  padding: 8vh 0 2vh;
+}
+
+.voice-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: min(92%, 640px);
+  margin: 48px auto 0;
+}
+
+.voice-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.voice-row img {
+  width: 34%;
+  display: block;
+}
+
+.voice-row .line {
+  position: static;
+  flex: 1;
+  max-width: none;
+}
+
+.pat {
+  left: 7%;
+  font-family: "Nanum Brush Script", cursive;
+  color: rgba(244, 239, 230, 0.92);
+}
+
+.pat.a { bottom: 18%; font-size: clamp(26px, 8cqw, 40px); }
+.pat.b { bottom: 7%; font-size: clamp(34px, 10cqw, 52px); }
+
+.sigh {
+  left: 5%;
+  top: 6%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(36px, 11cqw, 58px);
+  color: rgba(236, 240, 244, 0.92);
+}
+
+.shove {
+  right: 5%;
+  top: 8%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(36px, 12cqw, 58px);
+  color: #fff6ee;
+  transform: rotate(7deg);
+}
+
+.sob {
+  right: 8%;
+  bottom: 12%;
+  font-family: "Nanum Brush Script", cursive;
+  font-size: clamp(20px, 5cqw, 30px);
+  color: rgba(244, 239, 230, 0.5);
+}
+
+.drum.once {
+  left: 5%;
+  top: 34%;
+  font-size: clamp(64px, 16cqw, 104px);
+}
+
+.pulse.once {
+  top: 7%;
+  left: 5%;
+  right: auto;
+  font-size: clamp(26px, 7cqw, 40px);
+}
+
+.seal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.seal p {
+  margin: 0;
+  font-family: "Nanum Myeongjo", Batang, serif;
+  font-weight: 700;
+  font-size: clamp(40px, 9vw, 68px);
+  letter-spacing: 0.38em;
+  text-indent: 0.38em;
+  color: #f4efe6;
+}
+
+.cite {
+  margin: 0;
+  padding: 8vh 8vw 14vh;
+  background: #000;
+}
+
+.cite p {
+  margin: 0;
+  max-width: 32em;
+  padding: 2px 0 2px 18px;
+  border-left: 2px solid var(--gold-dim);
+  color: rgba(244, 239, 230, 0.86);
+  font-size: 15.5px;
+  line-height: 2.1;
+  letter-spacing: -0.02em;
+}
+
+.cite p + p {
+  margin-top: 1.35em;
+}
